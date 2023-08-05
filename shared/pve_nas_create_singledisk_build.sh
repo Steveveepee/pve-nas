@@ -190,12 +190,13 @@ do
           done < <( printf '%s\n' "${inputdevLIST[@]}" ) # dev device listing
 
           # Erase / Wipe disks
-          msg "Zapping, Erasing and Wiping disks..."
+          msg "Zapping, Erasing and Wiping disks... 1"
           while read dev
           do
             # Full device wipeout
             sgdisk --zap $dev >/dev/null 2>&1
-            dd if=/dev/zero of=$dev bs=1M status=progress
+            msg "Skipping dd 1"
+            #dd if=/dev/zero of=$dev bs=1M status=progress
             wipefs --all --force $dev >/dev/null 2>&1
             info "Zapped, destroyed & wiped device: $dev"
           done < <( printf '%s\n' "${inputdevLIST[@]}" | grep 'sd[a-z]$\|nvme[0-9]n[0-9]$' | uniq ) # file listing of disks to erase
@@ -310,12 +311,13 @@ then
   disk_label="$mnt_name"
 
   # Erase / Wipe disks
-  msg "Zapping, erasing and wiping disks..."
+  msg "Zapping, erasing and wiping disks...2"
   while read dev
   do
     # Full device wipeout
     sgdisk --zap $dev >/dev/null 2>&1
-    dd if=/dev/zero of=$dev bs=1M status=progress
+    msg "Skipping dd 2"
+    #dd if=/dev/zero of=$dev bs=1M status=progress
     wipefs -a -f $dev >/dev/null 2>&1
     # Wait for pending udev events
     udevadm settle
@@ -563,10 +565,11 @@ then
   disk_label="$mnt_name"
 
   # Erase / Wipe disks
-  msg "Zapping, Erasing and Wiping disks..."
+  msg "Zapping, Erasing and Wiping disks...3"
   while read dev
   do
-    dd if=/dev/zero of=$dev bs=1M status=progress
+    msg "Skipping dd 3"
+    #dd if=/dev/zero of=$dev bs=1M status=progress
     wipefs -a -f $dev >/dev/null 2>&1
     # Wait for pending udev events
     udevadm settle
