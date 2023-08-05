@@ -64,7 +64,7 @@ done
 # On connection fail
 if [ "$connection_up" = 1 ]
 then
-  echo "Checking for internet connectivity..."
+  msg "Checking for internet connectivity..."
   echo -e "Internet connectivity status: \033[0;31mDown\033[0m\n\nCannot proceed without a internet connection.\nFix your PVE hosts internet connection and try again..."
   echo
   exit 0
@@ -83,6 +83,7 @@ cd $REPO_TEMP
 
 # For local SRC a 'developer_settings.git' file must exist in repo dir
 REPO_PATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P | sed "s/${GIT_USER}.*/$GIT_USER/" )"
+msg "repo path:  $REPO_PATH"
 
 #---- Other Variables --------------------------------------------------------------
 #---- Other Files ------------------------------------------------------------------
