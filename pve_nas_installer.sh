@@ -96,7 +96,7 @@ then
   source $REPO_PATH/common/bash/src/pve_repo_loader.sh
 else
   # Download Github loader
-  wget -qL - https://raw.githubusercontent.com/$GIT_USER/common/main/bash/src/pve_repo_loader.sh -O $REPO_TEMP/pve_repo_loader.sh
+  wget -qL - https://raw.githubusercontent.com/ahuacate/common/main/bash/src/pve_repo_loader.sh -O $REPO_TEMP/pve_repo_loader.sh
   chmod +x $REPO_TEMP/pve_repo_loader.sh
   source $REPO_TEMP/pve_repo_loader.sh
 fi
